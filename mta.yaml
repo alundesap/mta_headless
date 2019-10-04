@@ -30,7 +30,7 @@ modules:
       memory: 256MB
       disk: 256M
    requires:
-    - name: python_ss
+    - name: headless-ss
    provides:
     - name: selenium_api
       properties:
@@ -76,6 +76,10 @@ resources:
          xsappname: headless
          tenant-mode: dedicated
    type: org.cloudfoundry.managed-service
- - name: python_ss
-   type: com.sap.xs.hana-securestore
+ - name: headless-ss
+    parameters:
+      service-name: HEADLESS_SS
+      service-plan: securestore
+      service: hana
+  type: com.sap.xs.hana-securestore
 
