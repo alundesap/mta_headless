@@ -77,9 +77,9 @@ resources:
          tenant-mode: dedicated
    type: org.cloudfoundry.managed-service
  - name: headless-ss
-    parameters:
+   parameters:
       service-name: HEADLESS_SS
       service-plan: securestore
       service: hana
-  type: com.sap.xs.hana-securestore
+   type: com.sap.xs.hana-securestore
 
