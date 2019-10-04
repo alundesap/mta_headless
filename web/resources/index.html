@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+<title>web</title>
+<script type="text/javascript">
+function guid() {
+    function _p8(s) {
+        var p = (Math.random().toString(16)+"000000000").substr(2,8);
+        return s ? "-" + p.substr(0,4) + "-" + p.substr(4,4) : p ;
+    }
+    return _p8() + _p8(true) + _p8(true) + _p8();
+}
+// console.log(guid());  
+</script>
+<script type="text/javascript">
+
+var xhr = new XMLHttpRequest();
+
+function dumpResponseHeaders(xhr_obj) {
+    var hdr_out = "";
+    hdr_out += "Response Headers\n";
+    hdr_out += "\n";
+    var headers = xhr_obj.getAllResponseHeaders();
+    return (hdr_out + headers + "\n");
+}
+
+var request_obj = 
+{
+	"ID": "",
+	"uuguid": "",
+	"expiresOn": "",
+	"createdAt": ""
+};
+</script>
+</head>
+<body style="font-family: Tahoma, Geneva, sans-serif">
+	<strong><a href="/">Headless</a></strong><br />
+<br />
+<!-- <a href="https://hanaexpress-sap-di-local-npm-registry.us.sap-a-team.com/%40sap%2Fxsenv">Query Local NPM Registry</a><br /> -->
+<a href="/catalog/Visits?$top=5&$orderby=createdAt%20desc">Last 5 Visits</a> via ODATA(noauth)<br />
+<a href="catalog/">ODATA Catalog</a> Provided by the srv module.<br />
+<a href="catalog/$metadata">catalog/$metadata</a> Provided by the srv module, Metadata.<br />
+<a href=https://conciletime.conciletime.com/catalog/$metadata>catalog/$metadata</a> Provided by the srv module, Metadata.(conciletime.com)<br />
+<div id="response_content">
+No results returned yet.    
+</div>
+</body>
+</html>

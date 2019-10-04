@@ -1,0 +1,56 @@
+ID: headless
+_schema-version: '2.1'
+description: Headless Chrome Example App
+version: 0.0.1
+
+modules:
+ - name: headless-utl
+   type: nodejs
+   path: util
+   parameters:
+      app-name: headless-utl
+      memory: 512M
+      disk-quota: 256M
+      host: headless-utl-${space}
+      #host: utility-${space} #The registry-config-${space}.json specifies this hostname uniquely
+      #host: utility
+      domain: cfapps.us10.hana.ondemand.com
+   provides:
+    - name: util_api
+      properties:
+         url: ${default-url}
+   requires:
+    - name: headless-uaa
+
+
+ - name: headless-web
+   type: html5
+   path: web
+   parameters:
+      memory: 512M
+      disk-quota: 256M
+      host: headless-${space}
+      domain: cfapps.us10.hana.ondemand.com
+   build-parameters:
+      builder: grunt
+   requires:
+    - name: headless-uaa
+    - name: util_api
+      group: destinations
+      properties:
+         name: util_be
+         url: ~{url}
+         forwardAuthToken: true
+
+resources:
+ - name: headless-uaa
+   parameters:
+      path: ./xs-security.json
+      service-name: HEADLESS_UAA
+      service-plan: application
+      service: xsuaa
+      config:
+         xsappname: headless
+         tenant-mode: dedicated
+   type: org.cloudfoundry.managed-service
+

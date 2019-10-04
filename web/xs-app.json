@@ -1,0 +1,38 @@
+{
+  "welcomeFile": "index.html",
+  "authenticationMethod": "route",
+  "logout": {
+    "logoutEndpoint": "/logout"
+  },
+  "routes": [
+    {
+      "source": "(login/)(.*)",
+      "destination": "util_be",
+      "csrfProtection": true,
+      "authenticationType": "none"
+    },
+    {
+      "source": "(logout/)(.*)",
+      "destination": "util_be",
+      "csrfProtection": true,
+      "authenticationType": "none"
+    },
+    {
+      "source": "(util/)(.*)",
+      "destination": "util_be",
+      "csrfProtection": true,
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "(callback/)(.*)",
+      "destination": "util_be",
+      "csrfProtection": true,
+      "authenticationType": "none"
+    },
+    {
+      "localDir": "resources",
+      "source": "^/(.*)",
+      "authenticationType": "none"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+_schema-version: '3.1'
+ID: headless-mtaex
+extends: headless
+
+modules:
+ - name: headless-utl
+   parameters:
+     app-name: headless_utl
+     
+ - name: headless-web
+   parameters:
+     app-name: headless_web
+     
+resources:
+ - name: headless-uaa
+   parameters:
+     path: xs-security.json
+     service-name: HEADLESS_UAA
+     service-plan: application
+     service: xsuaa
+     shared: true
+     config:
+       xsappname: headless
+       tenant-mode: shared
+

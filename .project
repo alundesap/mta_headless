@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>headless</name>
+	<comment>Headless Chrome Example App</comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+</projectDescription>
