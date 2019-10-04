@@ -1,16 +1,14 @@
 {
-  "name": "web",
-  "version": "0.0.1",
-  "description": "",
-  "private": true,
-  "devDependencies": {},
+  "name": "web-approuter",
+  "engines": {
+    "node": ">=4.0.0 <9.0.0"
+  },
   "dependencies": {
     "@sap/approuter": "^6.5.0"
   },
   "scripts": {
     "start": "node node_modules/@sap/approuter/approuter.js"
   },
-  "engines": {
-    "node": "8.x"
-  }
+  "version": "1.0.0",
+  "private": true
 }
