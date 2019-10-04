@@ -11,10 +11,9 @@ modules:
       app-name: headless-utl
       memory: 512M
       disk-quota: 256M
-      host: headless-utl-${space}
+      #host: headless-utl-${space}
       #host: utility-${space} #The registry-config-${space}.json specifies this hostname uniquely
       #host: utility
-      domain: cfapps.us10.hana.ondemand.com
    provides:
     - name: util_api
       properties:
@@ -29,10 +28,7 @@ modules:
    parameters:
       memory: 512M
       disk-quota: 256M
-      host: headless-${space}
-      domain: cfapps.us10.hana.ondemand.com
-   build-parameters:
-      builder: grunt
+      #host: headless-${space}
    requires:
     - name: headless-uaa
     - name: util_api

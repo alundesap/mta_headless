@@ -12,5 +12,5 @@ jenkins_cf_space [dev] : Cloud Foundry space for deployment
 ```
 npm config set @sap:registry "https://npm.sap.com/" ; npm config set registry "https://registry.npmjs.org/" ; npm config set strict-ssl true
 mkdir -p target
-mta --build-target CF --mtar target/headless-CF.mtar build
+mta --build-target=CF --mtar=target/headless-CF.mtar build
 ```
