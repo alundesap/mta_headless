@@ -14,13 +14,13 @@ modules:
       #host: headless-utl-${space}
       #host: utility-${space} #The registry-config-${space}.json specifies this hostname uniquely
       #host: utility
+      #domain: cfapps.us10.hanna.ondemand.com
    provides:
     - name: util_api
       properties:
          url: ${default-url}
    requires:
     - name: headless-uaa
-
 
  - name: headless-web
    type: html5
@@ -29,6 +29,7 @@ modules:
       memory: 512M
       disk-quota: 256M
       #host: headless-${space}
+      #domain: cfapps.us10.hanna.ondemand.com
    requires:
     - name: headless-uaa
     - name: util_api
@@ -37,6 +38,11 @@ modules:
          name: util_be
          url: ~{url}
          forwardAuthToken: true
+   properties:
+      #CORS: '[{"uriPattern": "^/sap/bc/ina/(.*)$", "allowedOrigin": [{"host":"ateam-isveng.us10.sapanalytics.cloud", "protocol":"https"}], "allowedMethods": ["GET", "POST", "OPTIONS"], "allowedHeaders": ["Origin", "Accept", "X-Requested-With", "Content-Type", "Access-Control-Request-Method", "Access-Control-Request-Headers", "Authorization", "X-Sap-Cid", "X-Csrf-Token"], "exposeHeaders": ["Accept", "Authorization", "X-Requested-With", "X-Sap-Cid", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials", "X-Csrf-Token", "Content-Type"]}]'
+      #INCOMING_CONNECTION_TIMEOUT: 600000
+      TENANT_HOST_PATTERN: '^(.*).cfapps.(.*).hana.ondemand.com'
+
 
 resources:
  - name: headless-uaa
