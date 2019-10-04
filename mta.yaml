@@ -22,6 +22,21 @@ modules:
    requires:
     - name: headless-uaa
 
+## Python Module Block Begin vvv
+ - name: headless-sel
+   type: python
+   path: selenium
+   parameters:
+      memory: 256MB
+      disk: 256M
+   requires:
+    - name: python_ss
+   provides:
+    - name: selenium_api
+      properties:
+         url: ${default-url}
+## Python Module Block End ^^^
+
  - name: headless-web
    type: html5
    path: web
@@ -38,6 +53,12 @@ modules:
          name: util_be
          url: ~{url}
          forwardAuthToken: true
+    - name: selenium_api
+      group: destinations
+      properties:
+        name: selenium_be
+        url: ~{url}
+        forwardAuthToken: true
    properties:
       #CORS: '[{"uriPattern": "^/sap/bc/ina/(.*)$", "allowedOrigin": [{"host":"ateam-isveng.us10.sapanalytics.cloud", "protocol":"https"}], "allowedMethods": ["GET", "POST", "OPTIONS"], "allowedHeaders": ["Origin", "Accept", "X-Requested-With", "Content-Type", "Access-Control-Request-Method", "Access-Control-Request-Headers", "Authorization", "X-Sap-Cid", "X-Csrf-Token"], "exposeHeaders": ["Accept", "Authorization", "X-Requested-With", "X-Sap-Cid", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials", "X-Csrf-Token", "Content-Type"]}]'
       #INCOMING_CONNECTION_TIMEOUT: 600000
@@ -55,4 +76,6 @@ resources:
          xsappname: headless
          tenant-mode: dedicated
    type: org.cloudfoundry.managed-service
+ - name: python_ss
+   type: com.sap.xs.hana-securestore
 

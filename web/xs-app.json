@@ -30,6 +30,12 @@
       "authenticationType": "none"
     },
     {
+      "source": "(selenium/)(.*)",
+      "destination": "selenium_be",
+      "csrfProtection": true,
+      "authenticationType": "xsuaa"
+    },
+    {
       "localDir": "resources",
       "source": "^/(.*)",
       "authenticationType": "none"
