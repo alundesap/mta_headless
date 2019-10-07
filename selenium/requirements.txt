@@ -7,3 +7,4 @@ hdbcli
 pydevd
 selenium
 ipython
+chromedriver_installer
