@@ -5,3 +5,5 @@ sap_py_jwt
 sap_xssec
 hdbcli
 pydevd
+selenium
+ipython
