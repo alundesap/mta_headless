@@ -17,3 +17,6 @@ mkdir -p target
 mta --build-target CF --mtar target/headless-CF.mtar build
 ```
 
+```
+git add . ; git commit -m "atomic commit" ; git push
+```
