@@ -20,3 +20,27 @@ mta --build-target CF --mtar target/headless-CF.mtar build
 ```
 git add . ; git commit -m "atomic commit" ; git push
 ```
+
+
+First create the services ahead of the deploys.
+This is because for some reason the deploy from local files which picks up the mtad.yaml file munges the path to be xs-securityjson and fails.
+```
+cf create-service xsuaa application CONCILE_UAA -c ./xs-security.json
+cf create-service hana securestore CONCILE_SS
+```
+
+Now do a local deploy which uses the mtad.yaml file and creates the module from a docker container and binds the services to it.
+```
+cf deploy .
+```
+
+Now build the rest of the app to an mtar per the mta.yaml file (note doesn't include the docker based module.)
+```
+mta --build-target CF --mtar target/headless-CF.mtar build
+```
+
+Finally deploy the mtar file but skip the ownership check since otherwise it will complain that the UAA is already associated with the concile-headless mta and won't let the headless mta also bind to it.
+```
+cf deploy target/headless-CF.mtar --skip-ownership-validation
+
+```

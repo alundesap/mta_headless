@@ -23,18 +23,18 @@ modules:
     - name: headless-uaa
 
 ## Python Module Block Begin vvv
- - name: headless-sel
-   type: python
-   path: selenium
-   parameters:
-      memory: 256MB
-      disk: 256M
-   requires:
-    - name: headless-ss
-   provides:
-    - name: selenium_api
-      properties:
-         url: ${default-url}
+# - name: headless-sel
+#   type: python
+#   path: selenium
+#   parameters:
+#      memory: 256MB
+#      disk: 256M
+#   requires:
+#    - name: headless-ss
+#   provides:
+#    - name: selenium_api
+#      properties:
+#         url: ${default-url}
 ## Python Module Block End ^^^
 
  - name: headless-web
@@ -53,12 +53,18 @@ modules:
          name: util_be
          url: ~{url}
          forwardAuthToken: true
-    - name: selenium_api
+    - name: headless-chr
       group: destinations
       properties:
-        name: selenium_be
-        url: ~{url}
-        forwardAuthToken: true
+         name: chrome_be
+         url: https://conciletime-dev-headless-chrome.cfapps.us10.hana.ondemand.com
+         forwardAuthToken: true
+#    - name: selenium_api
+#      group: destinations
+#      properties:
+#        name: selenium_be
+#        url: ~{url}
+#        forwardAuthToken: true
    properties:
       #CORS: '[{"uriPattern": "^/sap/bc/ina/(.*)$", "allowedOrigin": [{"host":"ateam-isveng.us10.sapanalytics.cloud", "protocol":"https"}], "allowedMethods": ["GET", "POST", "OPTIONS"], "allowedHeaders": ["Origin", "Accept", "X-Requested-With", "Content-Type", "Access-Control-Request-Method", "Access-Control-Request-Headers", "Authorization", "X-Sap-Cid", "X-Csrf-Token"], "exposeHeaders": ["Accept", "Authorization", "X-Requested-With", "X-Sap-Cid", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials", "X-Csrf-Token", "Content-Type"]}]'
       #INCOMING_CONNECTION_TIMEOUT: 600000
@@ -66,6 +72,7 @@ modules:
 
 
 resources:
+
  - name: headless-uaa
    parameters:
       path: ./xs-security.json
@@ -74,12 +81,20 @@ resources:
       service: xsuaa
       config:
          xsappname: headless
-         tenant-mode: dedicated
+         tenant-mode: shared
    type: org.cloudfoundry.managed-service
+
  - name: headless-ss
    parameters:
       service-name: HEADLESS_SS
       service-plan: securestore
       service: hana
    type: com.sap.xs.hana-securestore
+
+ - name: headless-chr
+   type: configuration
+   parameters:
+      provider-nid: mta
+      provider-id: headless-chrome:headless-browser
+      version: ">=0.0.1"
 

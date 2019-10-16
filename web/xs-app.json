@@ -30,8 +30,8 @@
       "authenticationType": "none"
     },
     {
-      "source": "(selenium/)(.*)",
-      "destination": "selenium_be",
+      "source": "(headless/)(.*)",
+      "destination": "chrome_be",
       "csrfProtection": true,
       "authenticationType": "xsuaa"
     },
