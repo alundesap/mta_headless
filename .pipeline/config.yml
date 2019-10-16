@@ -18,7 +18,7 @@ steps:
       credentialsId: 'CF_CREDENTIALSID'
       dockerImage: 's4sdk/docker-cf-cli'
       dockerWorkspace: '/home/jenkins/piper'
-    mtaDeployParameters: '-f -e mta_to_cf.mtaext'
+    mtaDeployParameters: '-f --skip-ownership-validation -e mta_to_cf.mtaext'
   mailSendNotifiction:
     notificationAttachment: true
     notificationRecipients: 'andrew.lunde@sap.com'
