@@ -17,7 +17,16 @@ app.use(bodyParser.json());
 app.get("/callback/v1.0/tenants/*", function (req, res) {
 
 	var responseStr = "";
-	responseStr += "<!DOCTYPE HTML><html><head><title>ConcileTime</title></head><body><h1>ConcileTime</h1><h2>WARNING!</h2><br />";
+	responseStr += "<!DOCTYPE HTML><html><head><title>ConcileTime</title></head><body><h1>Headless</h1><h2>WARNING!</h2><br />";
+	responseStr += "Tenant callback endpoint only allows PUT and DELETE methods to facilitate subscribe/unsubscribe.<br />";
+	responseStr += "</body></html>";
+	res.status(200).send(responseStr);
+});
+
+app.get("/login/callback/*", function (req, res) {
+
+	var responseStr = "";
+	responseStr += "<!DOCTYPE HTML><html><head><title>ConcileTime</title></head><body><h1>Headless</h1><h2>WARNING!</h2><br />";
 	responseStr += "Tenant callback endpoint only allows PUT and DELETE methods to facilitate subscribe/unsubscribe.<br />";
 	responseStr += "</body></html>";
 	res.status(200).send(responseStr);

@@ -36,11 +36,5 @@
 				"$XSAPPNAME.view" 
 			]
 		}
-	],
-	"oauth2-configuration": {   
-		"redirect-uris":
-		[
-			"http*://*.cfapps.us10.hanna.ondemand.com/**"
-		]   
-	}
+	]
 }

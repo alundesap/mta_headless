@@ -42,5 +42,9 @@ mta --build-target CF --mtar target/headless-CF.mtar build
 Finally deploy the mtar file but skip the ownership check since otherwise it will complain that the UAA is already associated with the concile-headless mta and won't let the headless mta also bind to it.
 ```
 cf deploy target/headless-CF.mtar --skip-ownership-validation
+```
 
+```
+cf undeploy headless
+cf undeploy headless-chrome --delete-services
 ```
