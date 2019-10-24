@@ -32,6 +32,18 @@ app.get("/login/callback/*", function (req, res) {
 	res.status(200).send(responseStr);
 });
 
+app.get("/util/links/*", function (req, res) {
+
+	var responseStr = "";
+	responseStr += "<!DOCTYPE HTML><html><head><title>ConcileTime</title></head><body><h1>Headless</h1><h2>INFO!</h2><br />";
+	responseStr += "This module provides subscribe/unsubscribe enpoints that enable multitenant features.<br />";
+	responseStr += "Examples are:<br />";
+	responseStr += "PUT /callback/v1.0/tenants/subdomain.<br />";
+	responseStr += "DELETE /callback/v1.0/tenants/subdomain.<br />";
+	responseStr += "</body></html>";
+	res.status(200).send(responseStr);
+});
+
 
 // subscribe/onboard a subscriber tenant
 app.put("/callback/v1.0/tenants/*", function (req, res) {

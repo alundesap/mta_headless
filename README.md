@@ -25,8 +25,10 @@ git add . ; git commit -m "atomic commit" ; git push
 First create the services ahead of the deploys.
 This is because for some reason the deploy from local files which picks up the mtad.yaml file munges the path to be xs-securityjson and fails.
 ```
-cf create-service xsuaa application CONCILE_UAA -c ./xs-security.json
-cf create-service hana securestore CONCILE_SS
+cd /Users/i830671/git/mta_headless
+git pull
+cf create-service xsuaa application HEADLESS_UAA -c ./xs-security.json
+cf create-service hana securestore HEADLESS_SS
 ```
 
 Now do a local deploy which uses the mtad.yaml file and creates the module from a docker container and binds the services to it.
