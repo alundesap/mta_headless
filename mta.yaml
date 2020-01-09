@@ -31,11 +31,13 @@ modules:
       host: chr-${space}
       docker:
          image: alunde/headless:latest
+   provides:
+    - name: chrome_api
+      properties:
+         url: ${default-url}
    requires:
     - name: headless-uaa
     - name: headless-ss
-   provides:
-    - name: headless-chr
 
  - name: headless-web
    type: html5
@@ -53,7 +55,7 @@ modules:
          name: util_be
          url: ~{url}
          forwardAuthToken: true
-    - name: headless-chr
+    - name: chrome_api
       group: destinations
       properties:
          name: chrome_be
