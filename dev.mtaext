@@ -18,7 +18,7 @@ modules:
  - name: headless-web
    parameters:
      app-name: headless_web
-     host: headless-web-${space}
+     host: conciletime-web-${space} # Must be <subaccount subdomain>-web-${space} where subaccount is where you are deploying into
      domain: conciletime.com
    properties:
      TENANT_HOST_PATTERN: '^(.*)-web-${space}.conciletime.com'

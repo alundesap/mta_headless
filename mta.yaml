@@ -45,7 +45,7 @@ modules:
    parameters:
       memory: 512M
       disk-quota: 256M
-      host: headless-web-${space}
+      host: headless-web-${space} # Must be <subaccount subdomain>-web-${space} where subaccount is where you are deploying into
       #domain: cfapps.us10.hanna.ondemand.com
    requires:
     - name: headless-uaa
