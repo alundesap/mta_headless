@@ -7,7 +7,13 @@ steps:
     collectTelemetryData: false
   mtaBuild:
     buildTarget: 'CF'
+    mtaBuildTool: 'cloudMbt'
+    platform: 'cf'
     defaultNpmRegistry: 'https://registry.npmjs.org/'
+    cloudMbt:
+      dockerImage: 'alunde/mbtci:latest'
+    dockerBasedModules: ['headless-chr']
+    postBuildAction: "mbt --version"
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
@@ -18,7 +24,7 @@ steps:
       credentialsId: 'CF_CREDENTIALSID'
       dockerImage: 's4sdk/docker-cf-cli'
       dockerWorkspace: '/home/jenkins/piper'
-    mtaDeployParameters: '-f --skip-ownership-validation -e mta_to_cf.mtaext'
+    mtaDeployParameters: '-f --skip-ownership-validation -e dev.mtaext'
   mailSendNotifiction:
     notificationAttachment: true
     notificationRecipients: 'andrew.lunde@sap.com'

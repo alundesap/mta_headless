@@ -6,10 +6,22 @@ modules:
  - name: headless-utl
    parameters:
      app-name: headless_utl
+     host: headless-utl-${space}
+     domain: conciletime.com
+
+ - name: headless-chr
+   parameters:
+     app-name: headless_chr
+     host: headless-chr-${space}
+     domain: conciletime.com
      
  - name: headless-web
    parameters:
      app-name: headless_web
+     host: headless-web-${space}
+     domain: conciletime.com
+   properties:
+     TENANT_HOST_PATTERN: '^(.*)-web-${space}.conciletime.com'
      
 resources:
  - name: headless-uaa
@@ -23,3 +35,6 @@ resources:
        xsappname: headless
        tenant-mode: shared
 
+ - name: headless-ss
+   parameters:
+     service-name: HEADLESS_SS

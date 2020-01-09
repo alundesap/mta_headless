@@ -22,20 +22,20 @@ modules:
    requires:
     - name: headless-uaa
 
-## Python Module Block Begin vvv
-# - name: headless-sel
-#   type: python
-#   path: selenium
-#   parameters:
-#      memory: 256MB
-#      disk: 256M
-#   requires:
-#    - name: headless-ss
-#   provides:
-#    - name: selenium_api
-#      properties:
-#         url: ${default-url}
-## Python Module Block End ^^^
+ - name: headless-chr
+   type: custom
+   path: headless-chr   #must match name: for customized build to remove the app resources in the mtar
+   parameters:
+      memory: 256M
+      disk-quota: 1G
+      host: chr-${space}
+      docker:
+         image: alunde/headless:latest
+   requires:
+    - name: headless-uaa
+    - name: headless-ss
+   provides:
+    - name: headless-chr
 
  - name: headless-web
    type: html5
@@ -43,7 +43,7 @@ modules:
    parameters:
       memory: 512M
       disk-quota: 256M
-      #host: headless-${space}
+      host: headless-web-${space}
       #domain: cfapps.us10.hanna.ondemand.com
    requires:
     - name: headless-uaa
@@ -57,20 +57,13 @@ modules:
       group: destinations
       properties:
          name: chrome_be
-         url: https://conciletime-dev-headless-chrome.cfapps.us10.hana.ondemand.com
+         url: ~{url}
          forwardAuthToken: true
-#    - name: selenium_api
-#      group: destinations
-#      properties:
-#        name: selenium_be
-#        url: ~{url}
-#        forwardAuthToken: true
    properties:
       #CORS: '[{"uriPattern": "^/sap/bc/ina/(.*)$", "allowedOrigin": [{"host":"ateam-isveng.us10.sapanalytics.cloud", "protocol":"https"}], "allowedMethods": ["GET", "POST", "OPTIONS"], "allowedHeaders": ["Origin", "Accept", "X-Requested-With", "Content-Type", "Access-Control-Request-Method", "Access-Control-Request-Headers", "Authorization", "X-Sap-Cid", "X-Csrf-Token"], "exposeHeaders": ["Accept", "Authorization", "X-Requested-With", "X-Sap-Cid", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials", "X-Csrf-Token", "Content-Type"]}]'
       #INCOMING_CONNECTION_TIMEOUT: 600000
       #conciletime-dev-headless-web.cfapps.us10.hana.ondemand.com
       TENANT_HOST_PATTERN: '^(.*)-dev-headless-web.cfapps.(.*).hana.ondemand.com'
-
 
 resources:
 
@@ -91,11 +84,3 @@ resources:
       service-plan: securestore
       service: hana
    type: com.sap.xs.hana-securestore
-
- - name: headless-chr
-   type: configuration
-   parameters:
-      provider-nid: mta
-      provider-id: headless-chrome:headless-browser
-      version: ">=0.0.1"
-
