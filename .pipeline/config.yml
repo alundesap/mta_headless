@@ -13,7 +13,7 @@ steps:
     cloudMbt:
       dockerImage: 'alunde/mbtci:latest'
     dockerBasedModules: ['headless-chr']
-    postBuildAction: "mbt --version"
+    postBuildAction: 'mbt --version'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
