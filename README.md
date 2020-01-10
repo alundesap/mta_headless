@@ -50,3 +50,7 @@ cf deploy target/headless-CF.mtar --skip-ownership-validation
 cf undeploy headless
 cf undeploy headless-chrome --delete-services
 ```
+
+```
+cf push headless_web -d conciletime.com -n conciletime-web-dev -m 512M -k 256M -p web ; cf logs headless_web
+```
