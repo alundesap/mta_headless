@@ -14,17 +14,17 @@ steps:
       dockerImage: 'alunde/mbtci:latest'
     dockerBasedModules: ['headless-chr']
     postBuildAction: 'mbt --version'
-#  cloudFoundryDeploy:
-#    deployTool: 'mtaDeployPlugin'
-#    deployType: 'standard'
-#    cloudFoundry:
-#      apiEndpoint: 'https://api.cf.us10.hana.ondemand.com'
-#      org: 'ConcileTime'
-#      space: 'dev'
-#      credentialsId: 'CF_CREDENTIALSID'
-#      dockerImage: 's4sdk/docker-cf-cli'
-#      dockerWorkspace: '/home/jenkins/piper'
-#    mtaDeployParameters: '-f --skip-ownership-validation -e dev.mtaext'
+  cloudFoundryDeploy:
+    deployTool: 'mtaDeployPlugin'
+    deployType: 'standard'
+    cloudFoundry:
+      apiEndpoint: 'https://api.cf.us10.hana.ondemand.com'
+      org: 'ConcileTime'
+      space: 'dev'
+      credentialsId: 'CF_CREDENTIALSID'
+      dockerImage: 's4sdk/docker-cf-cli'
+      dockerWorkspace: '/home/jenkins/piper'
+    mtaDeployParameters: '-f --skip-ownership-validation -e dev.mtaext'
 #  mailSendNotifiction:
 #    notificationAttachment: true
 #    notificationRecipients: 'andrew.lunde@sap.com'
