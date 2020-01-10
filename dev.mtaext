@@ -26,7 +26,7 @@ modules:
 resources:
  - name: headless-uaa
    parameters:
-     path: xs-security.json
+     path: xs-security.json # Must include redirect-uris that match domain enabled in space where you are deploying into
      service-name: HEADLESS_UAA
      service-plan: application
      service: xsuaa
