@@ -12,7 +12,7 @@ steps:
     defaultNpmRegistry: 'https://registry.npmjs.org/'
     cloudMbt:
       dockerImage: 'alunde/mbtci:latest'
-    dockerBasedModules: ['headless-chr','other']
+    dockerBasedModules: ['headless-chr']
     postBuildAction: 'mbt --version'
 #  cloudFoundryDeploy:
 #    deployTool: 'mtaDeployPlugin'
