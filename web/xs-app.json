@@ -30,6 +30,14 @@
       "authenticationType": "none"
     },
     {
+      "source": "(headless/admin)(.*)",
+      "destination": "chrome_be",
+      "httpMethods": ["POST", "GET"],
+      "csrfProtection": true,
+      "scope": ["$XSAPPNAME.create"],
+      "authenticationType": "xsuaa"
+    },
+    {
       "source": "(headless/)(.*)",
       "destination": "chrome_be",
       "csrfProtection": true,
