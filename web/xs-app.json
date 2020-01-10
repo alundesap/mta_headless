@@ -30,7 +30,22 @@
       "authenticationType": "none"
     },
     {
-      "source": "(headless/admin)(.*)",
+      "source": "(headless/admin/getpw)(.*)",
+      "destination": "chrome_be",
+      "csrfProtection": true,
+      "scope": ["$XSAPPNAME.view"],
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "(headless/admin/setpw)(.*)",
+      "destination": "chrome_be",
+      "httpMethods": ["POST", "GET"],
+      "csrfProtection": true,
+      "scope": ["$XSAPPNAME.create"],
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "(headless/admin/delpw)(.*)",
       "destination": "chrome_be",
       "httpMethods": ["POST", "GET"],
       "csrfProtection": true,
@@ -41,6 +56,7 @@
       "source": "(headless/)(.*)",
       "destination": "chrome_be",
       "csrfProtection": true,
+      "scope": ["$XSAPPNAME.view"],
       "authenticationType": "xsuaa"
     },
     {
